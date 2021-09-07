@@ -12,3 +12,6 @@ class CallLog(models.Model):
     time_connected = models.DateTimeField()
     time_finished = models.DateTimeField()
     remark = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.name}({self.extn}) called {self.destination} - {self.remark}"
