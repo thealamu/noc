@@ -4,4 +4,4 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     """Index page of the logger app."""
-    return HttpResponse("Hello, world. You're at the logger index.")
+    return render(request, "logger/index.html")
