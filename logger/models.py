@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 class CallDetails(models.Model):
-    extn = models.IntegerField(max_length=4)
+    extn = models.IntegerField()
     name = models.CharField(max_length=100)
-    budget = models.IntegerField(max_length=4)
+    budget = models.IntegerField()
     destination = models.CharField(max_length=100)
     is_official = models.BooleanField(default=True)
     is_international = models.BooleanField(default=True)
