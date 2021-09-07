@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class CallDetails(models.Model):
+class CallLog(models.Model):
     extn = models.IntegerField()
     name = models.CharField(max_length=100)
     budget = models.IntegerField()
