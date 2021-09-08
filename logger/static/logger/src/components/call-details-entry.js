@@ -72,7 +72,7 @@ export default {
 
             <div class="space-x-4 flex my-8 self-end">
                 <button @click="submit" class="bg-purple-500 hover:bg-purple-700 text-white text-center py-2 px-8 rounded">Save</button>
-                <button class="border-2 bg-gray-200 hover:bg-gray-300 hover:border-gray-300 text-center px-8 py-2 rounded">Clear</button>
+                <button @click="clear" class="border-2 bg-gray-200 hover:bg-gray-300 hover:border-gray-300 text-center px-8 py-2 rounded">Clear</button>
             </div>
         </div>
     `,
@@ -127,6 +127,16 @@ export default {
         },
         onRmkChange(val) {
             this.remark = val
+        },
+        clear() {
+            // reset all data
+            this.extn = ''
+            this.fullname = ''
+            this.budget = ''
+            this.destination = ''
+            this.tBooked = ''
+            this.tConnected = ''
+            this.tFinished = ''
         }
     },
 }
