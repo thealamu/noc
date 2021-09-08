@@ -118,6 +118,7 @@ export default {
                 remark: this.remark,
             }
             console.log(data)
+            this.clear()
         },
         onDestTypeChange(val) {
             this.isInternational = val.toLowerCase() === "international"
