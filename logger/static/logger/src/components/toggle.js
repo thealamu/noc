@@ -1,5 +1,6 @@
 /* Toggle between two states */
 export default {
+    emits: ['change'],
     props: {
         state0: {
             type: String,
@@ -24,9 +25,11 @@ export default {
     methods: {
         setState0() {
             this.state = 0;
+            this.$emit('change', this.state0);
         },
         setState1() {
             this.state = 1;
+            this.$emit('change', this.state1);
         }
     }
 }
