@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class CallLog(models.Model):
     extn = models.IntegerField()
-    name = models.CharField(max_length=100)
+    fullname = models.CharField(max_length=100)
     budget = models.IntegerField()
     destination = models.CharField(max_length=100)
     is_official = models.BooleanField(default=True)
@@ -14,4 +14,4 @@ class CallLog(models.Model):
     remark = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"{self.name}({self.extn}) called {self.destination} - {self.remark}"
+        return f"{self.fullname}({self.extn}) called {self.destination} - {self.remark}"
