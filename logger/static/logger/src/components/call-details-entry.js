@@ -117,7 +117,7 @@ export default {
                 tFinished: this.tFinished,
                 remark: this.remark,
             }
-            console.log(data)
+            this.saveCallDetails(data)
             this.clear()
         },
         onDestTypeChange(val) {
@@ -138,6 +138,17 @@ export default {
             this.tBooked = ''
             this.tConnected = ''
             this.tFinished = ''
+        },
+        saveCallDetails(data) {
+            // post the data to /log
+            fetch("/log", {
+               method: "POST",
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+               body: JSON.stringify(data) 
+            })
+            .catch(err => console.log(err))
         }
     },
 }
