@@ -11,22 +11,22 @@ export default {
             <div class="space-x-8 flex flex-row">
                 <div class="w-1/4">
                     <label for="extension" class="block text-sm font-medium text-gray-700">Extension</label>
-                    <input v-model="extn" type="text" name="extension" id="extension" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="extn" type="text" name="extension" id="extension" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
 
                 <div class="w-1/4">
                     <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input v-model="fullname" type="text" name="fullname" id="fullname" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="fullname" type="text" name="fullname" id="fullname" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
 
                 <div class="w-1/4">
                     <label for="budget" class="block text-sm font-medium text-gray-700">Budget Number</label>
-                    <input v-model="budget" type="text" name="budget" id="budget" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="budget" type="text" name="budget" id="budget" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
 
                 <div class="w-1/4">
                     <label for="destination" class="block text-sm font-medium text-gray-700">Destination Number</label>
-                    <input v-model="destination" type="text" name="destination" id="destination" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="destination" type="text" name="destination" id="destination" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
             </div>
             <div class="space-x-8 flex my-4">
@@ -43,25 +43,25 @@ export default {
                 <div class="w-1/3">
                     <div class="flex justify-between">
                         <label for="tbooked" class="block text-sm font-medium text-gray-700">Time Booked</label>
-                        <span @click="onTimeBooked" class="text-sm font-bold hover:text-purple-500 cursor-pointer">Now</span>
+                        <span @click="onTimeBooked" class="text-sm font-bold hover:text-blue-500 cursor-pointer">Now</span>
                     </div>
-                    <input v-model="tBooked" type="time" name="tbooked" id="tbooked" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="tBooked" type="time" name="tbooked" id="tbooked" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
 
                 <div class="w-1/3">
                     <div class="flex justify-between">
                         <label for="tconnected" class="block text-sm font-medium text-gray-700">Time Connected</label>
-                        <span @click="onTimeConnected" class="text-sm font-bold hover:text-purple-500 cursor-pointer">Now</span>
+                        <span @click="onTimeConnected" class="text-sm font-bold hover:text-blue-500 cursor-pointer">Now</span>
                     </div>
-                    <input v-model="tConnected" type="time" name="tconnected" id="tconnected" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="tConnected" type="time" name="tconnected" id="tconnected" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
 
                 <div class="w-1/3">
                     <div class="flex justify-between">
                         <label for="tfinished" class="block text-sm font-medium text-gray-700">Time Finished</label>
-                        <span @click="onTimeFinished" class="text-sm font-bold hover:text-purple-500 cursor-pointer">Now</span>
+                        <span @click="onTimeFinished" class="text-sm font-bold hover:text-blue-500 cursor-pointer">Now</span>
                     </div>
-                    <input v-model="tFinished" type="time" name="tfinished" id="tfinished" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-purple-500 rounded"/>
+                    <input v-model="tFinished" type="time" name="tfinished" id="tfinished" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@ export default {
             </div>
 
             <div class="space-x-4 flex my-8 self-end">
-                <button @click="submit" class="bg-purple-500 hover:bg-purple-700 text-white text-center py-2 px-8 rounded">Save</button>
+                <button @click="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-8 rounded">Save</button>
                 <button @click="clear" class="border-2 bg-gray-200 hover:bg-gray-300 hover:border-gray-300 text-center px-8 py-2 rounded">Clear</button>
             </div>
         </div>

@@ -17,9 +17,9 @@ export default {
     },
     template: `
         <div class="h-10 border border-gray-300 rounded">
-            <button class="h-full w-1/3" :class="{'bg-purple-500 text-white': state === 0 }" @click="setState0">{{ this.state0 }}</button>
-            <button class="h-full w-1/3" :class="{'bg-purple-500 text-white': state === 1 }" @click="setState1">{{ this.state1 }}</button>
-            <button class="h-full w-1/3" :class="{'bg-purple-500 text-white': state === 2 }" @click="setState2">{{ this.state2 }}</button>
+            <button class="h-full w-1/3" :class="{'bg-blue-500 text-white': state === 0 }" @click="setState0">{{ this.state0 }}</button>
+            <button class="h-full w-1/3" :class="{'bg-blue-500 text-white': state === 1 }" @click="setState1">{{ this.state1 }}</button>
+            <button class="h-full w-1/3" :class="{'bg-blue-500 text-white': state === 2 }" @click="setState2">{{ this.state2 }}</button>
         </div>
     `,
     data() {
