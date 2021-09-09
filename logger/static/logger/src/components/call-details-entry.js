@@ -105,19 +105,20 @@ export default {
         },
         submit() {
             // log all the data as a single object
-            const data = {
-                extn: this.extn,
-                fullname: this.fullname,
-                budget: this.budget,
-                destination: this.destination,
-                isInternational: this.isInternational,
-                isOfficial: this.isOfficial,
-                tBooked: this.tBooked,
-                tConnected: this.tConnected,
-                tFinished: this.tFinished,
-                remark: this.remark,
-            }
-            this.saveCallDetails(data)
+            this.saveCallDetails(this.toBackendFormat(
+                {
+                    extn: this.extn,
+                    fullname: this.fullname,
+                    budget: this.budget,
+                    destination: this.destination,
+                    isInternational: this.isInternational,
+                    isOfficial: this.isOfficial,
+                    tBooked: this.tBooked,
+                    tConnected: this.tConnected,
+                    tFinished: this.tFinished,
+                    remark: this.remark,
+                }
+            ))
             this.clear()
         },
         onDestTypeChange(val) {
@@ -149,6 +150,30 @@ export default {
                body: JSON.stringify(data) 
             })
             .catch(err => console.log(err))
+        },
+        toBackendFormat(data) {
+            return {
+                "extn": data["extn"],
+                "fullname": data["fullname"],
+                "budget": data["budget"],
+                "destination": data["destination"],
+                "is_official": data["isOfficial"],
+                "is_international": data["isInternational"],
+                "time_booked": this.unixTimeOf(data["tBooked"]),
+                "time_connected": this.unixTimeOf(data["tConnected"]),
+                "time_finished": this.unixTimeOf(data["tFinished"]),
+                "remark": data["remark"]
+            }
+        },
+        unixTimeOf(timeStr) {
+            let now = new Date()
+            const [hh, mm] = timeStr.split(":")
+            //now.setHour
+            // convert time in format 05:56 to unix timestamp
+            now.setHours(parseInt(hh))
+            now.setMinutes(parseInt(mm))
+
+            return now.getTime() / 1000
         }
     },
 }
