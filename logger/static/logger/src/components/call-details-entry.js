@@ -87,7 +87,7 @@ export default {
             tBooked: '',
             tConnected: '',
             tFinished: '',
-            remark: '',
+            remark: 'Success',
         }
     },
     methods: {
