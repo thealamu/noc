@@ -77,9 +77,11 @@
                     {{ log.remark }}
                 </span>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="{% url 'admin:index' %}logger/calllog/{{log.id}}/change" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-              </td>
+              {% if user.is_authenticated %}
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <a href="{% url 'admin:index' %}logger/calllog/{{log.id}}/change" class="text-blue-600 hover:text-blue-900">Edit</a>
+                </td>
+              {% endif %}
             </tr>
             {% endfor %}
           </tbody>
