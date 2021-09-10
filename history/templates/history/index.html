@@ -3,12 +3,14 @@
 {% load static %}
 
 {% block src %}
-    <!-- Vue and Tailwind deps -->
-    <link href="{% static 'logger/dist/tailwind.min.css' %}" rel="stylesheet">
-    <script type="module" src="{% static 'logger/dist/vue.esm-browser.js' %}"></script>
+    <!-- Tailwind deps -->
+    <link href="{% static 'history/dist/tailwind.min.css' %}" rel="stylesheet">
     <!-- Entry script -->
+    <script type="module" src="{% static 'history/main.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-    <div id=app></div>
+    {% for log in logs %}
+        {{ log.fullname }}
+    {% endfor %}
 {% endblock %}

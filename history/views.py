@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from logger.models import CallLog
 
 # Create your views here.
 def index(request):
-    return render(request, "history/index.html")
+    logs = CallLog.objects.all()
+    return render(request, "history/index.html", {"logs": logs})
