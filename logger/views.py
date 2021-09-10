@@ -2,16 +2,19 @@ import json
 
 from django.http.response import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from datetime import datetime
 from . import models
 
 # Create your views here.
+@login_required
 def index(request):
     """Index page of the logger app."""
     return render(request, "logger/index.html")
 
 
+@login_required
 def call_log(request):
     if request.method == "POST":
         """Save log to the database"""
