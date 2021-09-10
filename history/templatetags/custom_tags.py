@@ -13,3 +13,10 @@ def initials(value):
 
     firstname = "".join(splits[:1])
     return "".join(firstname[:1])
+
+
+@register.filter(name="rmkcolor")
+def rmkcolor(value):
+    if value.lower() == "success":
+        return "blue"
+    return "red"
