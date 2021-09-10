@@ -17,8 +17,8 @@
 <body>
     <nav class="h-12 flex align-center justify-end bg-gray-50">
         <ul class="space-x-8 mx-4 flex items-center">
-            <li><a class="hover:underline" href="/">Logger</a></li>
-            <li><a class="hover:underline" href="#">Call History</a></li>
+            <li><a class="hover:underline" href="{% url 'logger:index' %}">Logger</a></li>
+            <li><a class="hover:underline" href="{% url 'history:index' %}">Call History</a></li>
             <li><a class="hover:underline" href="#">Generate Report</a></li>
             <li><a class="hover:underline" href="{% url 'admin:index' %}">Admin</a></li>
             <li><a class="hover:underline" href="{% url 'logout' %}">Logout</a></li>

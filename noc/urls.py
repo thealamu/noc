@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path("history/", include("history.urls"), name="history"),
+    path("history/", include(("history.urls", "history"), namespace="history")),
     path(
         "accounts/login/",
         auth_views.LoginView.as_view(template_name="login.html"),
@@ -26,5 +26,5 @@ urlpatterns = [
     ),
     path("accounts/logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("admin/", admin.site.urls),
-    path("", include("logger.urls")),
+    path("", include(("logger.urls", "logger"), namespace="logger")),
 ]
