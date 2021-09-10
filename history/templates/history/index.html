@@ -9,6 +9,8 @@
     <script type="module" src="{% static 'history/main.js' %}"></script>
 {% endblock %}
 
+{% load custom_tags %}
+
 {% block content %}
     
 <div class="flex flex-col">
@@ -33,9 +35,6 @@
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Remark
               </th>
-              <th scope="col" class="relative px-6 py-3">
-                <span class="sr-only">Edit</span>
-              </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -43,8 +42,8 @@
             <tr>
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                  <div class="flex justify-center items-center flex-shrink-0 h-10 w-10 rounded-full bg-blue-200 font-medium">
+                    <span>{{ log.fullname|initials }}</span>
                   </div>
                   <div class="ml-4">
                     <div class="text-sm font-medium text-gray-900">
