@@ -20,3 +20,13 @@ def rmkcolor(value):
     if value.lower() == "success":
         return "blue"
     return "red"
+
+
+@register.filter(name="get_call_time")
+def get_call_time(log):
+    if log.remark.lower() != "success":
+        return "N/A"
+    time_conn = log.time_connected
+    time_fin = log.time_finished
+    # return the difference between the two times in minutes
+    return f"{(time_fin - time_conn).seconds // 60} minutes"
