@@ -13,7 +13,13 @@
 
 {% block content %}
     
-<div class="flex flex-col">
+<div class="flex flex-col bg-gray-50">
+  <form action="{% url 'history:index' %}" method="get" class="mx-32 my-4 h-12 flex justify-center items-center rounded">
+    <input type="text" class="h-full px-4 w-4/5 border-2 border-blue-200 rounded" placeholder="Search" name="q">
+    <div class="mx-2 w-1/5 flex justify-start items-center h-full">
+      <input @click="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded" type="submit" value="Search"/>
+    </div>
+  </form>
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
