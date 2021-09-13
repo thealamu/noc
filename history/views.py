@@ -5,6 +5,8 @@ from logger.models import CallLog
 # Create your views here.
 def index(request):
     logs = CallLog.objects.all()
+    filtered = False
+
     query = request.GET.get("q")
     if query:
         logs = logs.filter(
@@ -13,4 +15,6 @@ def index(request):
             | Q(budget__icontains=query)
             | Q(destination__icontains=query)
         ).order_by("-id")
-    return render(request, "history/index.html", {"logs": logs})
+        filtered = True
+
+    return render(request, "history/index.html", {"logs": logs, "filtered": filtered})
