@@ -10,7 +10,7 @@ export default {
         <div class="space-y-16 flex flex-col">
             <div class="space-x-8 flex flex-row">
                 <div class="w-1/4">
-                    <label for="extension" class="block text-sm font-medium text-gray-700">Extension</label>
+                    <label for="extension" class="block text-sm font-medium text-gray-700">Caller Extension</label>
                     <input v-model="extn" type="text" name="extension" id="extension" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
                 </div>
 
