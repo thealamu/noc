@@ -63,7 +63,9 @@ export default {
                         <label for="tconnected" class="block text-sm font-medium text-gray-700">Time Connected</label>
                         <span @click="onTimeConnected" class="text-sm font-bold hover:text-blue-500 cursor-pointer">Now</span>
                     </div>
-                    <input v-model="tConnected" type="time" name="tconnected" id="tconnected" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="tConnected" type="time" name="tconnected" id="tconnected" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': tConnectedErr }"
+					/>
                 </div>
 
                 <div class="w-1/3">
@@ -71,7 +73,9 @@ export default {
                         <label for="tfinished" class="block text-sm font-medium text-gray-700">Time Finished</label>
                         <span @click="onTimeFinished" class="text-sm font-bold hover:text-blue-500 cursor-pointer">Now</span>
                     </div>
-                    <input v-model="tFinished" type="time" name="tfinished" id="tfinished" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="tFinished" type="time" name="tfinished" id="tfinished" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': tFinishedErr }"
+					/>
                 </div>
             </div>
 
@@ -103,10 +107,14 @@ export default {
             tBooked: '',
 			tBookedErr: false,
 
+            tConnected: '',
+			tConnectedErr: false,
+
+            tFinished: '',
+			tFinishedErr: false,
+
             isInternational: true,
             isOfficial: true,
-            tConnected: '',
-            tFinished: '',
             remark: 'Success',
         }
     },
@@ -157,6 +165,25 @@ export default {
 				return false
 			} else {
 				this.tBookedErr = false
+			}
+
+			if (this.remark !== "Success") {
+				return true
+			}
+			
+			// remark is success, check tConn and tFin
+			if (this.isEmpty(this.tConnected)) {
+				this.tConnectedErr = true
+				return false
+			} else {
+				this.tConnectedErr = false
+			}
+
+			if (this.isEmpty(this.tFinished)) {
+				this.tFinishedErr = true
+				return false
+			} else {
+				this.tFinishedErr = false
 			}
 
 			return true
