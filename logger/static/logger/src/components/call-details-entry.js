@@ -11,22 +11,30 @@ export default {
             <div class="space-x-8 flex flex-row">
                 <div class="w-1/4">
                     <label for="extension" class="block text-sm font-medium text-gray-700">Caller Extension</label>
-                    <input v-model="extn" type="text" name="extension" id="extension" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="extn" type="text" name="extension" id="extension" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': extnErr }"
+					/>
                 </div>
 
                 <div class="w-1/4">
                     <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input v-model="fullname" type="text" name="fullname" id="fullname" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="fullname" type="text" name="fullname" id="fullname" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': fullnameErr }"
+					/>
                 </div>
 
                 <div class="w-1/4">
                     <label for="budget" class="block text-sm font-medium text-gray-700">Budget Number</label>
-                    <input v-model="budget" type="text" name="budget" id="budget" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="budget" type="text" name="budget" id="budget" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': budgetErr }"
+					/>
                 </div>
 
                 <div class="w-1/4">
                     <label for="destination" class="block text-sm font-medium text-gray-700">Destination Number</label>
-                    <input v-model="destination" type="text" name="destination" id="destination" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="destination" type="text" name="destination" id="destination" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': destinationErr }"
+					/>
                 </div>
             </div>
             <div class="space-x-8 flex my-4">
@@ -45,7 +53,9 @@ export default {
                         <label for="tbooked" class="block text-sm font-medium text-gray-700">Time Booked</label>
                         <span @click="onTimeBooked" class="text-sm font-bold hover:text-blue-500 cursor-pointer">Now</span>
                     </div>
-                    <input v-model="tBooked" type="time" name="tbooked" id="tbooked" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"/>
+                    <input v-model="tBooked" type="time" name="tbooked" id="tbooked" class="w-full px-2 h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+						:class="{ 'border-red-400': tBookedErr }"
+					/>
                 </div>
 
                 <div class="w-1/3">
@@ -79,12 +89,22 @@ export default {
     data() {
         return {
             extn: '',
+			extnErr: false,
+
             fullname: '',
+			fullnameErr: false,
+
             budget: '',
+			budgetErr: false,
+
             destination: '',
+			destinationErr: false,
+
+            tBooked: '',
+			tBookedErr: false,
+
             isInternational: true,
             isOfficial: true,
-            tBooked: '',
             tConnected: '',
             tFinished: '',
             remark: 'Success',
@@ -103,7 +123,53 @@ export default {
         currentTime() {
             return new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false})
         },
+		validateInputs() {
+			if (this.isEmpty(this.extn)) {
+				this.extnErr = true
+				return false
+			} else {
+				this.extnErr = false
+			}
+
+			if (this.isEmpty(this.fullname)) {
+				this.fullnameErr = true
+				return false
+			} else {
+				this.fullnameErr = false
+			}
+			
+			if (this.isEmpty(this.budget)) {
+				this.budgetErr = true
+				return false
+			} else {
+				this.budgetErr = false
+			}
+
+			if (this.isEmpty(this.destination)) {
+				this.destinationErr = true
+				return false
+			} else {
+				this.destinationErr = false
+			}
+
+			if (this.isEmpty(this.tBooked)) {
+				this.tBookedErr = true
+				return false
+			} else {
+				this.tBookedErr = false
+			}
+
+			return true
+		},
+		isEmpty(str) {
+			return str.trim() === ""
+		},
         submit() {
+			// run input validations
+			if (!this.validateInputs()) {
+				alert("Some fields are missing")
+				return
+			}
             // log all the data as a single object
             this.saveCallDetails(this.toBackendFormat(
                 {
