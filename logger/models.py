@@ -8,9 +8,9 @@ class CallLog(models.Model):
     destination = models.CharField(max_length=100)
     is_official = models.BooleanField(default=True)
     is_international = models.BooleanField(default=True)
-    time_booked = models.DateTimeField()
-    time_connected = models.DateTimeField()
-    time_finished = models.DateTimeField()
+    time_booked = models.DateTimeField(null=True)
+    time_connected = models.DateTimeField(null=True)
+    time_finished = models.DateTimeField(null=True)
     remark = models.CharField(max_length=20)
 
     def __str__(self):

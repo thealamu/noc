@@ -21,9 +21,13 @@ def call_log(request):
         data = json.loads(request.body)
 
         # convert the timestamps to datetime
-        data["time_booked"] = datetime.fromtimestamp(data["time_booked"])
-        data["time_connected"] = datetime.fromtimestamp(data["time_connected"])
-        data["time_finished"] = datetime.fromtimestamp(data["time_finished"])
+        timestamp_booked = data["time_booked"]
+        timestamp_connected = data["time_connected"]
+        timestamp_finished = data["time_finished"]
+
+        data["time_booked"] = datetime.fromtimestamp(timestamp_booked) if timestamp_booked else None
+        data["time_connected"] = datetime.fromtimestamp(timestamp_connected) if timestamp_connected else None
+        data["time_finished"] = datetime.fromtimestamp(timestamp_finished) if timestamp_finished else None
 
         (
             extn,
