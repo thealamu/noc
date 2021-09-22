@@ -167,7 +167,7 @@ export default {
         submit() {
 			// run input validations
 			if (!this.validateInputs()) {
-				alert("Some fields are missing")
+				alert("Please fill missing fields")
 				return
 			}
             // log all the data as a single object
@@ -215,6 +215,7 @@ export default {
                 },
                body: JSON.stringify(data) 
             })
+			.then((response) => response.ok ? alert("Call has been saved") : alert("Could not save call, an error occured"))
             .catch(err => console.log(err))
         },
         toBackendFormat(data) {
