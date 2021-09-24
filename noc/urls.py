@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path("reportgen/", include(("reportgen.urls", "reportgen"), namespace="reportgen")),
     path("history/", include(("history.urls", "history"), namespace="history")),
     path(
         "accounts/login/",

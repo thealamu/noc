@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "reportgen.apps.ReportgenConfig",
     "history.apps.HistoryConfig",
     "logger.apps.LoggerConfig",
     "django.contrib.admin",
