@@ -212,7 +212,6 @@ export default {
                     remark: this.remark,
                 }
             ))
-            this.clear()
         },
         onDestTypeChange(val) {
             this.isInternational = val.toLowerCase() === "international"
@@ -242,7 +241,14 @@ export default {
                 },
                body: JSON.stringify(data) 
             })
-			.then((response) => response.ok ? alert("Call has been saved") : alert("Could not save call, an error occured"))
+			.then(function(response) {
+				if (response.ok) {
+					alert("Call has been saved")
+					this.clear()
+				} else {
+					alert("Could not save call, an error occured")
+				}
+			})
             .catch(err => console.log(err))
         },
         toBackendFormat(data) {
