@@ -233,6 +233,7 @@ export default {
             this.tFinished = ''
         },
         saveCallDetails(data) {
+            var that = this
             // post the data to /log
             fetch("/log", {
                method: "POST",
@@ -244,7 +245,7 @@ export default {
 			.then(function(response) {
 				if (response.ok) {
 					alert("Call has been saved")
-					this.clear()
+					that.clear()
 				} else {
 					alert("Could not save call, an error occured")
 				}
