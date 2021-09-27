@@ -85,7 +85,9 @@ export default {
             </div>
 
             <div class="space-x-4 flex my-8 self-end">
-                <button @click="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-8 rounded">Save</button>
+                <button @click="submit" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-8 rounded"
+                    :class="{ 'opacity-50': isSaving }"
+                >Save</button>
                 <button @click="clear" class="border-2 bg-gray-200 hover:bg-gray-300 hover:border-gray-300 text-center px-8 py-2 rounded">Clear</button>
             </div>
         </div>
@@ -116,6 +118,8 @@ export default {
             isInternational: true,
             isOfficial: true,
             remark: 'Success',
+
+            isSaving: false
         }
     },
     methods: {
@@ -192,6 +196,10 @@ export default {
 			return str.trim() === ""
 		},
         submit() {
+            if (this.isSaving) { 
+                return
+            }
+            this.isSaving = true
 			// run input validations
 			if (!this.validateInputs()) {
 				alert("Please fill missing fields")
@@ -249,6 +257,7 @@ export default {
 				} else {
 					alert("Could not save call, an error occured")
 				}
+                that.isSaving = false
 			})
             .catch(err => console.log(err))
         },
