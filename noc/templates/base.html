@@ -41,27 +41,31 @@
                     <br>
                     <input type="radio" name="range" value="monthly" id="monthly" class="form-radio">
                     <label for="monthly">Monthly Report</label>
-                    
-                    <button type="submit" id="download-btn"
-                        class="my-4 px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                        Download
-                    </button>
+
+                    <div class="flex">
+                        <button id="close-btn"
+                            class="my-4 px-4 mx-1 py-2 bg-red-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">Close</button>
+                        <button type="submit" id="download-btn"
+                            class="my-4 px-4 mx-1 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            Download
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
     <script>
-        let modal = document.getElementById('my-modal');
+        let modal = document.getElementById("my-modal");
+        let closeBtn = document.getElementById('close-btn');
         let reportgen = document.getElementById('report-gen');
 
         reportgen.addEventListener('click', function () {
             modal.classList.remove('hidden');
         });
 
-        modal.addEventListener('click', function (e) {
-            if (e.target.id === 'my-modal') {
-                modal.classList.add('hidden');
-            }
+        closeBtn.addEventListener('click', function (e) {
+            modal.classList.add('hidden');
+            e.preventDefault()
         });
     </script>
 </body>
