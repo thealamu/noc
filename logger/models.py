@@ -4,7 +4,7 @@ from django.db import models
 class CallLog(models.Model):
     extn = models.IntegerField()
     fullname = models.CharField(max_length=100)
-    budget = models.IntegerField()
+    budget = models.CharField(max_length=20)
     destination = models.CharField(max_length=100)
     is_official = models.BooleanField(default=True)
     is_international = models.BooleanField(default=True)

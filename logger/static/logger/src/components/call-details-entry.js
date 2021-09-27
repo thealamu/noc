@@ -25,7 +25,7 @@ export default {
 
                 <div class="w-1/4">
                     <label for="budget" class="block text-sm font-medium text-gray-700">Budget Number</label>
-                    <input v-model="budget" type="number" name="budget" id="budget" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
+                    <input v-model="budget" type="text" name="budget" id="budget" class="px-2 w-full h-10 border-2 border-gray-300 focus:border-blue-500 rounded"
 						:class="{ 'border-red-400': budgetErr }"
 					/>
                 </div>
