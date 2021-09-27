@@ -5,6 +5,8 @@ from openpyxl import Workbook
 from django.http import HttpResponse
 from tempfile import NamedTemporaryFile
 
+rate = 12.0
+
 # Create your views here.
 def index(request):
     report_range = request.GET.get("range")
@@ -29,14 +31,20 @@ def index(request):
     wb = Workbook()
     ws = wb.active  # active sheet
 
-    i, j = 1, 1
+    # insert headers
+    ws.append(["Date", "Description", "Amount", "Currency"])
+
+    i, j = 2, 1
     # walk through all call logs, and add them to the sheet
     for call_log in call_logs:
-        ws.cell(row=i, column=j).value = call_log.fullname
-        ws.cell(row=i, column=j + 1).value = call_log.extn
-        ws.cell(row=i, column=j + 2).value = call_log.destination
-        ws.cell(row=i, column=j + 3).value = call_log.budget
-        ws.cell(row=i, column=j + 4).value = call_log.remark
+        ws.cell(row=i, column=j).value = date_of(call_log.time_booked)
+
+        description = f"{call_time_of(call_log)} {''.join(call_log.destination.split(' '))} {call_log.fullname}"
+
+        ws.cell(row=i, column=j + 1).value = description
+
+        ws.cell(row=i, column=j + 2).value = call_time_of(call_log) * rate
+        ws.cell(row=i, column=j + 3).value = "NGN"
         i += 1
 
     # send the file to the browser
@@ -49,3 +57,16 @@ def index(request):
         tmp.seek(0)
         response.write(tmp.read())
     return response
+
+
+def date_of(timestamp):
+    return timestamp.strftime("%d-%m-%y")
+
+
+def call_time_of(log):
+    if log.remark.lower() != "success":
+        return 0
+    time_conn = log.time_connected
+    time_fin = log.time_finished
+    # return the difference between the two times in minutes
+    return (time_fin - time_conn).seconds // 60
