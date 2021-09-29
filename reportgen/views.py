@@ -19,7 +19,7 @@ def index(request):
     if report_range == "weekly":
         # get time of last sunday 12am
         today = datetime.today()
-        since = today - timedelta(days=7)
+        since = today - timedelta(days=today.weekday())
     elif report_range == "monthly":
         # get the timestamp of the first day of the month
         today = datetime.today()
