@@ -69,4 +69,7 @@ def call_time_of(log):
     time_conn = log.time_connected
     time_fin = log.time_finished
     # return the difference between the two times in minutes
-    return (time_fin - time_conn).seconds // 60
+    call_time = (time_fin - time_conn).seconds // 60
+    if call_time <= 0:
+        return 1
+    return call_time
