@@ -37,3 +37,8 @@ def get_call_time(log):
         minute_str = "minute"
 
     return f"{call_time} {minute_str}"
+
+
+@register.filter(name="get_call_date")
+def get_call_date(log):
+    return log.time_booked.strftime("%d/%m/%Y")
