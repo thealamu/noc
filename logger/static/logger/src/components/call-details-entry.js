@@ -203,6 +203,7 @@ export default {
 			// run input validations
 			if (!this.validateInputs()) {
 				alert("Please fill missing fields")
+                this.isSaving = false
 				return
 			}
             // log all the data as a single object
@@ -259,7 +260,10 @@ export default {
 				}
                 that.isSaving = false
 			})
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                that.isSaving = false
+            })
         },
         toBackendFormat(data) {
             return {
